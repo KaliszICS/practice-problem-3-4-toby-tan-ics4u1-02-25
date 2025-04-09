@@ -1,27 +1,39 @@
+import java.util.ArrayList;
+
 public class PracticeProblem {
 
-	public static void main(String args[]) {
+    public static void main(String[] args) {
+        }
 
-	}
-
-	public static void q1() {
-		//Write question 1 code here
-	}
-
-	public static void q2() {
-		//Write question 2 code here
-	}
-
-	public static void q3() {
-		//Write question 3 code here
-	}
-
-	public static void q4() {
-		//Write question 4 code here
-	}
-
-	public static void q5() {
-		//Write question 5 code here
-	}
-
+		public static int[] recaman(int n) {
+			if (n <= 0) return new int[0];
+	
+			ArrayList<Integer> sequence = new ArrayList<>();
+			sequence.add(0); // a(0), used for calculation only
+	
+			build(n, 1, sequence);
+	
+			// Copy from a(1) to a(n)
+			int[] result = new int[n];
+			for (int i = 0; i < n; i++) {
+				result[i] = sequence.get(i + 1);
+			}
+	
+			return result;
+		}
+	
+		private static void build(int n, int i, ArrayList<Integer> seq) {
+			if (seq.size() > n) return;
+	
+			int prev = seq.get(seq.size() - 1);
+			int next = prev - i;
+	
+			if (next > 0 && !seq.contains(next)) {
+				seq.add(next);
+			} else {
+				seq.add(prev + i);
+			}
+	
+			build(n, i + 1, seq);
+		}
 }
