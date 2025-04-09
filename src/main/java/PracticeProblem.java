@@ -9,11 +9,10 @@ public class PracticeProblem {
 			if (n <= 0) return new int[0];
 	
 			ArrayList<Integer> sequence = new ArrayList<>();
-			sequence.add(0); // a(0), used for calculation only
+			sequence.add(0);
 	
 			build(n, 1, sequence);
 	
-			// Copy from a(1) to a(n)
 			int[] result = new int[n];
 			for (int i = 0; i < n; i++) {
 				result[i] = sequence.get(i + 1);
